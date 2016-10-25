@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <!-- 配置为开发模式 -->
+    <constant name="struts.devMode" value="true" />
+
+    <!-- 把主题配置为simple -->
+    <constant name="struts.ui.theme" value="simple" />
+
+    <package name="testPackage" namespace="/" extends="struts-default">
+
+        <!--<action name="test" method="testExecute" class="testAction">-->
+            <!--&lt;!&ndash; 返回json类型数据 &ndash;&gt;-->
+            <!--<result type="json"> </result>-->
+                <!--&lt;!&ndash;<param name="root">result&lt;!&ndash; result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;</param>&ndash;&gt;-->
+
+        <!--</action>-->
+
+        <action name="jsonAjax" class="testAction">
+
+            <!-- 将返回类型设置为json -->
+            <result>WEB-INF/test/test.jsp</result>
+        </action>
+    </package>
+</struts>

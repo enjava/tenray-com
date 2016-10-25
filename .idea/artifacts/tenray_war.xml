@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tenray:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="tenray.war">
+      <element id="artifact" artifact-name="tenray:war exploded" />
+    </root>
+  </artifact>
+</component>
