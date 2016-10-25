@@ -130,10 +130,10 @@ public class RegisterAction extends ActionSupport {
 		// 检查输入的手机号码用户是否存在
 		// userService.getBymobile(mobile)
 		if (userService.getBymobile(mobile).size() > 0)
-			phoneverifyCode = "cunzai";
+		   	phoneverifyCode = "cunzai";
 		else {// 不存在
-			if (StringUtils.hasLength(mobile)&& ThUtil.isPhoneNum(mobile)) {
-				phoneverifyCode = SignUtil.nextInt() + "";
+			if (!ThUtil.isEmpty(mobile)&& ThUtil.isPhoneNum(mobile)) {
+			 	phoneverifyCode = SignUtil.nextInt() + "";
 
 				String str = SignUtil.sendcode(mobile, phoneverifyCode);// 发送验证码
 				ActionContext.getContext().getSession().put("phoneverifyCode", phoneverifyCode);

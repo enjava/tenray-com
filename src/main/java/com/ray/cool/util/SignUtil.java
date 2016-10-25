@@ -170,7 +170,6 @@ public class SignUtil {
 			rsp = client.execute(req);
 			return rsp.getBody();
 		} catch (ApiException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "发送异常";
