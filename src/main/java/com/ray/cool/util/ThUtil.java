@@ -1,9 +1,12 @@
 package com.ray.cool.util;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.ray.cool.entity.PhoneCode;
 import com.ray.cool.entity.User;
+import com.ray.cool.service.PhoneCodeService;
 import org.apache.struts2.ServletActionContext;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,9 +18,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ThUtil {
-//
-//    @Resource
-//    private static PhoneCodeService phoneCodeService;
+
+    @Resource
+    private static PhoneCodeService phoneCodeService;
 
 	public static int nextInt() {
 		Random rand = new Random();
@@ -147,43 +150,43 @@ public class ThUtil {
     }
      //是否允许发送手机验证码  每天超过10次验证码,不让发送  以24点位准
     public static boolean isAllowCode(String phoneNum){
-//        if (!isEmpty(phoneNum)) {
-//            PhoneCode phoneCode = phoneCodeService.getById(Long.parseLong(phoneNum));
-//            if (phoneCode == null) {
-//                phoneCode = new PhoneCode();
-//                phoneCode.setId(Long.parseLong(phoneNum));
-//                phoneCode.setAmount(1);
-//                phoneCode.setTime(new Date());
-//                phoneCodeService.update(phoneCode);
-//            } else {
-//                if (phoneCode.getAmount() > 9)
-//                {
-//                  if (daysOfTwo(phoneCode.getTime(),new Date())<1)
-//                      return false;
-//                    else {
-//                      phoneCode.setTime(new Date());
-//                      phoneCode.setAmount(1);
-//                      phoneCodeService.update(phoneCode);
-//                      return  true;
-//                  }
-//
-//                }
-//                else {
-//                    if (!(daysOfTwo(phoneCode.getTime(),new Date())<1))//超过一天
-//                    {
-//                        phoneCode.setTime(new Date());
-//                        phoneCode.setAmount(1);
-//                        phoneCodeService.update(phoneCode);
-//                        return true;
-//                    }
-//                    else {
-//                        phoneCode.setAmount(phoneCode.getAmount() + 1);
-//                        phoneCodeService.update(phoneCode);
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
+        if (!isEmpty(phoneNum)) {
+            PhoneCode phoneCode = phoneCodeService.getById(Long.parseLong(phoneNum));
+            if (phoneCode == null) {
+                phoneCode = new PhoneCode();
+                phoneCode.setId(Long.parseLong(phoneNum));
+                phoneCode.setAmount(1);
+                phoneCode.setTime(new Date());
+                phoneCodeService.update(phoneCode);
+            } else {
+                if (phoneCode.getAmount() > 9)
+                {
+                  if (daysOfTwo(phoneCode.getTime(),new Date())<1)
+                      return false;
+                    else {
+                      phoneCode.setTime(new Date());
+                      phoneCode.setAmount(1);
+                      phoneCodeService.update(phoneCode);
+                      return  true;
+                  }
+
+                }
+                else {
+                    if (!(daysOfTwo(phoneCode.getTime(),new Date())<1))//超过一天
+                    {
+                        phoneCode.setTime(new Date());
+                        phoneCode.setAmount(1);
+                        phoneCodeService.update(phoneCode);
+                        return true;
+                    }
+                    else {
+                        phoneCode.setAmount(phoneCode.getAmount() + 1);
+                        phoneCodeService.update(phoneCode);
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 

@@ -159,7 +159,7 @@ public interface BaseDao<T,PK extends Serializable> {
 	 * @param pageNumber
 	 * @return
 	 */
-	public List<T> page(DetachedCriteria criteria, Integer pageSize, Integer pageNumber);
+	public List<T> page(DetachedCriteria criteria,Integer pageSize,Integer pageNumber);
 
 	/**
 	 * 根据DetachedCriteria和Page对象获取分页page对象
