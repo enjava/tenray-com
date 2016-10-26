@@ -233,7 +233,10 @@ function updatePass()
 						else if(msg=="newisold"){	
 						    alert("当前手机就是您要修改的手机,无需更改");					   			
 						//newisold
-						}
+						} else if (msg =="overtimes") {
+                          alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+
+                      }
 						else if(msg==null){	
 						    alert("发送失败");
 						}						
@@ -293,7 +296,10 @@ function new_mobile_change(){
 						}
 						else if(msg==null){
 						alert("发送失败");
-						}						
+						}
+                    else if (msg =="overtimes") {
+                        alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                    }
 			   }
 						
 				
@@ -1038,7 +1044,10 @@ h3{
            type: "post",
            async: true,//
            success: function (msg) {
-               if (msg != "success") {
+                if (msg =="overtimes") {
+                   alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+               }
+               else if (msg != "success") {
                    alert("发送失败");
                }
            }
@@ -1207,7 +1216,9 @@ h3{
 							alert("原交易密码不正确,请确认");
 						} else if(msg == "pw<6") {
 							alert("新交易密码过短");
-						}else if(msg != "success")
+						}else if (msg =="overtimes") {
+                            alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                        }else if(msg != "success")
 							alert("发送失败");
 					}
 
@@ -1276,7 +1287,10 @@ h3{
 					type : "post",
 					async : true,//
 					success : function(msg) {
-						if (msg != "success") {
+                         if (msg =="overtimes") {
+                            alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                        }
+                        else if (msg != "success") {
 							alert("发送失败");
 						}   
 					}
@@ -1355,7 +1369,9 @@ h3{
 							alert("新邮箱已被注册!");
 					    }else if (msg == "oldcodeerror") {
 							alert("邮箱验证码不正确");
-					    }
+					    }else  if (msg =="overtimes") {
+                            alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                        }
 					    else if (msg == "fail") {
 							alert("发送失败");
 					    }
@@ -1376,7 +1392,9 @@ h3{
 					type : "post",
 					async : true,//
 					success : function(msg) {
-						if (msg != "success") {
+                        if (msg =="overtimes") {
+                            alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                        }else if (msg != "success") {
 							alert("发送失败");
 					    }
 					}
@@ -1404,7 +1422,9 @@ h3{
 					success : function(msg) {
 						if (msg == "fail") {
 							alert("发送失败");
-						} else if (msg == null) {
+						}  else if (msg =="overtimes") {
+                            alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                        }else if (msg == null) {
 							alert("发送失败");
 						}
 					}

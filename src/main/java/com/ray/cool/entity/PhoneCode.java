@@ -18,6 +18,7 @@ public class PhoneCode {
     private Long id;
     private Date  time;
     private Integer amount;
+    private Integer total;
 
     public Long getId() {
         return id;
@@ -41,5 +42,13 @@ public class PhoneCode {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 }

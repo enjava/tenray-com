@@ -24,5 +24,11 @@ public class TestAction {
 		// 发送验证码邮件
 		SendEmail.doSendNormalMail(mail);
 	}
+	@Test
+	public void phone()throws Exception{
+	    String str ="1";
+        boolean b=ThUtil.isPhoneNum(str);
+        System.out.println(b);
+    }
 
 }

@@ -2,10 +2,8 @@ package com.ray.cool.util;
 
 import com.ray.cool.bean.Constans;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.Base64;
 
 
 /**
@@ -66,28 +64,28 @@ public class PwdUtil {
 	 * @param obj
 	 * @return
 	 */
-	public static String strToBase64(Object obj){
-		
-		try {
-			return Base64.getEncoder().encodeToString(obj.toString().getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			Constans.LOG.info(e);
-			return Base64.getEncoder().encodeToString(obj.toString().getBytes());
-		}
-	}
-	/**
-	 * base64编码的字符串解码
-	 * @param b64Str
-	 * @return
-	 */
-	public static String base64ToStr(String b64Str){
-		try {
-			return new String(Base64.getDecoder().decode(b64Str),"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			Constans.LOG.info(e);
-			return new String(Base64.getDecoder().decode(b64Str));
-		}
-	}
+//	public static String strToBase64(Object obj){
+//
+//		try {
+//			return Base64.getEncoder().encodeToString(obj.toString().getBytes("UTF-8"));
+//		} catch (UnsupportedEncodingException e) {
+//			Constans.LOG.info(e);
+//			return Base64.getEncoder().encodeToString(obj.toString().getBytes());
+//		}
+//	}
+//	/**
+//	 * base64编码的字符串解码
+//	 * @param b64Str
+//	 * @return
+//	 */
+//	public static String base64ToStr(String b64Str){
+//		try {
+//			return new String(Base64.getDecoder().decode(b64Str),"UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			Constans.LOG.info(e);
+//			return new String(Base64.getDecoder().decode(b64Str));
+//		}
+//	}
 	
 
 

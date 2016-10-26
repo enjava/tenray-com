@@ -80,6 +80,8 @@ public class LeftAction {
     @Resource
     // 推荐奖励业务类
     private RecommendedAwardService recommendedAwardService;
+    @Resource
+    private PhoneCodeService phoneCodeService;
 
     public void sendCkeckId() throws Exception {
         User user = ThUtil.sysUser();
@@ -89,6 +91,10 @@ public class LeftAction {
             if (IDCardUtil.IDCardValidate(idCard).equals("有效")) {
                 String phone = user.getMobile();
                  String code=ThUtil.nextStr();
+                if(!ThUtil.isAllowCode(phone,phoneCodeService)){
+                    ThUtil.response("overtimes");
+                    return;
+                }
                  SignUtil.sendCheckIdCode(phone,code);
                  ThUtil.put("checkidcode",code);
 //                ThUtil.put("checkidcode", "123456");
@@ -170,6 +176,10 @@ public class LeftAction {
             if (newPayPassword.length() >= 6) {
                 String phone = user.getMobile();
                 String code = ThUtil.nextStr();
+                if(!ThUtil.isAllowCode(phone,phoneCodeService)){
+                    ThUtil.response("overtimes");
+                    return;
+                }
                 SignUtil.sendPayPasswd(phone, code);
                 // ThUtil.put("new_pay_passwd", newPayPassword);
                 ThUtil.put("update_pay_passwd_code", code);
@@ -216,6 +226,10 @@ public class LeftAction {
             if (!(payPassword.length() < 6)) {
                 String phone = user.getMobile();
                 String code = ThUtil.nextStr();
+                if(!ThUtil.isAllowCode(phone,phoneCodeService)){
+                    ThUtil.response("overtimes");
+                    return;
+                }
                 SignUtil.sendPayPasswd(phone, code);
                 ThUtil.put("pay_passwd_code", code);
                 ThUtil.put("pay_passwd_number", payPassword);
@@ -385,6 +399,10 @@ public class LeftAction {
                 List<User> usr = userService.getBymobile(newPhoneNumber);// 检查手机是否被注册
                 if (!(usr.size() > 0)) {
                     String code = ThUtil.nextInt() + "";
+                    if(!ThUtil.isAllowCode(newPhoneNumber,phoneCodeService)){
+                        ThUtil.response("overtimes");
+                        return;
+                    }
                     SignUtil.sendOldPhone(newPhoneNumber, code);
                     ThUtil.put("newPhoneCode", code);
                     ThUtil.put("newPhoneNumber", newPhoneNumber);
@@ -413,6 +431,10 @@ public class LeftAction {
             String oldPhone = user.getMobile();
             String code = ThUtil.nextInt() + "";
             if (!ThUtil.isEmpty(oldPhone) && oldPhoneNumber.equals("188666124")) {
+                if(!ThUtil.isAllowCode(oldPhone,phoneCodeService)){
+                    ThUtil.response("overtimes");
+                    return;
+                }
                 SignUtil.sendOldPhone(oldPhone, code);
                 ThUtil.put("oldphoneCode", code);
                 strResult = "success";
@@ -542,6 +564,7 @@ public class LeftAction {
     public String recommended_award() throws Exception {
         User user = ThUtil.sysUser();
         if (user != null) {
+            user=userService.getById(user.getId());
             Set<RecommendedAward> awards = user.getRecommendedAwards();
             if (awards.size() > 0) {
                 Long[] awardIds = new Long[awards.size()];

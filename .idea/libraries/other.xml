@@ -1,10 +1,62 @@
 <component name="libraryTable">
   <library name="other">
     <CLASSES>
-      <root url="jar://E:/java tools/other/taobao-sdk-java-auto_1455552377940-20160607.jar!/" />
-      <root url="jar://E:/java tools/other/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-5.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-commons-5.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/asm-tree-5.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/aspectjweaver-1.8.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/c3p0-0.9.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/classmate-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-dbcp2-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-fileupload-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-io-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-lang3-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-pool2-2.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/fastjson-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/freemarker-2.3.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/geronimo-jta_1.1_spec-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/hibernate-c3p0-5.1.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/hibernate-commons-annotations-5.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/hibernate-core-5.1.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/hibernate-jpa-2.1-api-1.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jandex-2.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javassist-3.20.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jboss-logging-3.3.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/json-lib-2.4-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jstl-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-api-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-core-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mchange-commons-java-0.2.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mysql-connector-java-5.1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ognl-3.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-aop-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-aspects-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-beans-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-context-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-core-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-expression-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-jdbc-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-orm-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-tx-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-web-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-webmvc-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/struts2-core-2.3.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/struts2-json-plugin-2.3.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/struts2-spring-plugin-2.3.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/taobao-sdk-java-auto_1455552377940-20160607.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xml-apis-1.0.b2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xwork-core-2.3.20.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/taobao-sdk-java-auto_1455552377940-20160607-source.jar!/" />
+    </SOURCES>
   </library>
 </component>

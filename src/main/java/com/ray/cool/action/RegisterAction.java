@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ray.cool.entity.User;
 import com.ray.cool.service.LeveService;
+import com.ray.cool.service.PhoneCodeService;
 import com.ray.cool.service.UserService;
 import com.ray.cool.util.SignUtil;
 import com.ray.cool.util.ThUtil;
@@ -36,8 +37,10 @@ public class RegisterAction extends ActionSupport {
 	private LeveService leveService;
 	private User user;
 	private String verify_coder;
+    private String fhash;
 
-
+    @Resource
+    private PhoneCodeService phoneCodeService;
 	@Override
 	public String execute() throws Exception {
 		return super.execute();
@@ -120,7 +123,7 @@ public class RegisterAction extends ActionSupport {
 	}
 
 	// 发送手机验证码
-	public void verifyCoder() {
+	public void verifyCoder() throws Exception{
 		if (user != null) {
 			mobile = user.getMobile();
 			System.out.println(mobile);
@@ -133,8 +136,12 @@ public class RegisterAction extends ActionSupport {
 		   	phoneverifyCode = "cunzai";
 		else {// 不存在
 			if (!ThUtil.isEmpty(mobile)&& ThUtil.isPhoneNum(mobile)) {
-			 	phoneverifyCode = SignUtil.nextInt() + "";
 
+                if(!ThUtil.isAllowCode(mobile,phoneCodeService)){
+                    ThUtil.response("overtimes");
+                    return;
+                }
+                phoneverifyCode = SignUtil.nextInt() + "";
 				String str = SignUtil.sendcode(mobile, phoneverifyCode);// 发送验证码
 				ActionContext.getContext().getSession().put("phoneverifyCode", phoneverifyCode);
 				ActionContext.getContext().getSession().put("mobileCode", mobile);
@@ -198,4 +205,11 @@ public class RegisterAction extends ActionSupport {
 		this.verify_coder = verify_coder;
 	}
 
+    public String getFhash() {
+        return fhash;
+    }
+
+    public void setFhash(String fhash) {
+        this.fhash = fhash;
+    }
 }

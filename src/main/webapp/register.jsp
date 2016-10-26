@@ -322,7 +322,9 @@ var __HASH_KEY__ = "kaodxiEQXJwveJmFSOGVYSLcBQWyPyBVuTjozjrnjoHvaBISQy";
 					if(msg=="cunzai"){
 						alert('手机号码已被注册,请更换其它手机号');
 						return false;
-					}
+					} else if (msg =="overtimes") {
+					    alert ('今天验证码请求已经超过最大次数,无法再发送手机验证码!请您明天再来!!');
+                    }
 					else
 						phoneVerifyCoder = msg;
 				}

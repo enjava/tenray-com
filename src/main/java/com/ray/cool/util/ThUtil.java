@@ -6,7 +6,6 @@ import com.ray.cool.entity.User;
 import com.ray.cool.service.PhoneCodeService;
 import org.apache.struts2.ServletActionContext;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,8 +18,6 @@ import java.util.regex.Pattern;
 
 public class ThUtil {
 
-    @Resource
-    private static PhoneCodeService phoneCodeService;
 
 	public static int nextInt() {
 		Random rand = new Random();
@@ -96,6 +93,9 @@ public class ThUtil {
 	 * @return
 	 */
 	public static boolean isPhoneNum(String number) {
+	    if (number==null)
+	        return false;
+
 		Pattern p = Pattern.compile("^1(3|5|7|8)\\d{9}$");
 		return p.matcher(number).matches();
 	}
@@ -148,27 +148,34 @@ public class ThUtil {
         return day2 - day1;
 
     }
-     //是否允许发送手机验证码  每天超过10次验证码,不让发送  以24点位准
-    public static boolean isAllowCode(String phoneNum){
-        if (!isEmpty(phoneNum)) {
+     //是否允许发送手机验证码  每天超过10次验证码,不让发送  以24点为准
+    public static boolean isAllowCode(String phoneNum,PhoneCodeService phoneCodeService){
+       return new ThUtil().isAllowCodeNoStatic(phoneNum, phoneCodeService);
+    }
+
+    public boolean isAllowCodeNoStatic(String phoneNum,PhoneCodeService phoneCodeService){
+        if (isPhoneNum(phoneNum)) {
             PhoneCode phoneCode = phoneCodeService.getById(Long.parseLong(phoneNum));
             if (phoneCode == null) {
                 phoneCode = new PhoneCode();
                 phoneCode.setId(Long.parseLong(phoneNum));
                 phoneCode.setAmount(1);
                 phoneCode.setTime(new Date());
-                phoneCodeService.update(phoneCode);
+                phoneCode.setTotal(1);
+                phoneCodeService.save(phoneCode);
+                return  true;
             } else {
                 if (phoneCode.getAmount() > 9)
                 {
-                  if (daysOfTwo(phoneCode.getTime(),new Date())<1)
-                      return false;
+                    if (daysOfTwo(phoneCode.getTime(),new Date())<1)
+                        return false;
                     else {
-                      phoneCode.setTime(new Date());
-                      phoneCode.setAmount(1);
-                      phoneCodeService.update(phoneCode);
-                      return  true;
-                  }
+                        phoneCode.setTime(new Date());
+                        phoneCode.setAmount(1);
+                        phoneCode.setTotal(phoneCode.getTotal()+1);
+                        phoneCodeService.update(phoneCode);
+                        return  true;
+                    }
 
                 }
                 else {
@@ -176,11 +183,13 @@ public class ThUtil {
                     {
                         phoneCode.setTime(new Date());
                         phoneCode.setAmount(1);
+                        phoneCode.setTotal(phoneCode.getTotal()+1);
                         phoneCodeService.update(phoneCode);
                         return true;
                     }
                     else {
                         phoneCode.setAmount(phoneCode.getAmount() + 1);
+                        phoneCode.setTotal(phoneCode.getTotal()+1);
                         phoneCodeService.update(phoneCode);
                         return true;
                     }
